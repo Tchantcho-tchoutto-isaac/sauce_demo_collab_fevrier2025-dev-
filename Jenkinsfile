@@ -1,21 +1,32 @@
-pipeline {
-    agent {
-        docker {
-            image 'cypress/browsers'  
+pipeline{
+    agent{
+        docker{
+            image 'cypress/browsers'
             args '--entrypoint=""'
         }
     }
-     
-    
-    stages {
-        stage('Check npm Version') {
-            steps {
+    stages{
+        stage("verifier que npm fonctionne"){
+            steps{
                 sh 'npm --version'
             }
         }
-        stage('check cypress version') {
+         stage("verifier la version de cypress"){
+            steps{
+                sh 'npx cypress --version'
+            }
+        }
+        stage("installer les dependance"){
             steps {
-               sh 'npx cypress --version '
+                sh 'npm i'
+            }
+        }
+
+        
+
+        stage("Executer les test"){
+            steps{
+                sh 'npx cypress run'
             }
         }
     }
