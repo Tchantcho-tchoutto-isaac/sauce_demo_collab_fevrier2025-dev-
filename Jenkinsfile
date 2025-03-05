@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'cypress/included '  
+            image 'cypress/browsers'  
             args '--entrypoint=""'
         }
     }
@@ -11,6 +11,11 @@ pipeline {
         stage('Check npm Version') {
             steps {
                 sh 'npm --version'
+            }
+        }
+        stage('check cypress version') {
+            steps {
+               sh 'npx cypress --version '
             }
         }
     }
