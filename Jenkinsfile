@@ -29,12 +29,6 @@ pipeline{
                 sh 'npx cypress run'
             }
         } 
-        stage("instalation du report"){
-            steps{
-                sh 'npm init npm i --save-dev cypress-mochawesome-reporter'
-            }
-
-        }
 
       
     }
