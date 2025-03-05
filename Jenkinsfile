@@ -8,11 +8,12 @@ pipeline {
      
     
     stages {
-        stage('Check npm Version') {
+         stage('Check npm Version') {
             steps {
-                sh 'npm --install'
+                sh 'npm install'
             }
         }
+        
         stage('Check npm Version') {
             steps {
                 sh 'npm --version'
