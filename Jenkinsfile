@@ -8,12 +8,6 @@ pipeline {
      
     
     stages {
-         stage('Check npm Version') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        
         stage('Check npm Version') {
             steps {
                 sh 'npm --version'
@@ -21,7 +15,7 @@ pipeline {
         }
         stage('check cypress version ') {
             steps {
-               sh 'npx cypress --version'
+               sh 'npm --version'
             }
         }
     }
