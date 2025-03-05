@@ -6,11 +6,7 @@ pipeline{
         }
     }
     stages{
-        stage("verifier que npm fonctionne"){
-            steps{
-                sh 'npm --version'
-            }
-        }
+       
          stage("verifier la version de cypress"){
             steps{
                 sh 'npx cypress --version'
@@ -20,6 +16,11 @@ pipeline{
          stage("installer les dependance"){
             steps {
                 sh 'npm install'
+            }
+        }
+         stage("verifier que npm fonctionne"){
+            steps{
+                sh 'npm --version'
             }
         }
         stage("installation  de cypress "){
@@ -40,7 +41,7 @@ pipeline{
     }
       post{
         always {
-            archiveArtifacts artifacts: 'cypress/reports//.', followSymlinks: false
+            archiveArtifacts artifacts: 'cypress/reports', followSymlinks: false
         }
     }
 }
