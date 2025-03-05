@@ -40,9 +40,8 @@ pipeline{
       
     }
       post{
-        always {
-          junit 'newman-report.xml'
-            archiveArtifacts artifacts: 'newman-report.html', allowEmptyArchive: true
+      always {
+            junit 'build/reports/**/*.xml'
         }
     }
 }

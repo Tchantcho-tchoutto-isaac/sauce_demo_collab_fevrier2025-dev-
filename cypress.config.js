@@ -1,16 +1,17 @@
-const { defineConfig } = require("cypress");
-const grep = require("@cypress/grep/src/plugin");
+const { defineConfig } = require('cypress');
+
 module.exports = defineConfig({
-  reporter: 'cypress-mochawesome-reporter', // a ajouter
   reporter: 'junit',
   reporterOptions: {
-    mochaFile: 'results/my-test-output-[hash].xml',},
+    mochaFile: 'results/my-test-output-[hash].xml', // Définir l'emplacement du fichier de sortie JUnit
+    toConsole: true, // Afficher les résultats dans la console également
+  },
+
   e2e: {
     setupNodeEvents(on, config) {
-      require('@cypress/grep/src/plugin')(config);
-      grep(on, config);
-      require('cypress-mochawesome-reporter/plugin')(on);// a ajouter
+      return config;
+    },
 
-      return config;    },
+    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}', // Localisation des fichiers de test
   },
 });
