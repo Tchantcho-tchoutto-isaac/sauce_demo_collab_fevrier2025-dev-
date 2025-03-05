@@ -13,10 +13,5 @@ pipeline {
                 sh 'npm --version'
             }
         }
-        stage('check cypress version ') {
-            steps {
-               sh 'npm --version'
-            }
-        }
     }
 }
