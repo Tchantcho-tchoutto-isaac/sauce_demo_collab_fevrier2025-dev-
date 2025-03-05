@@ -18,7 +18,7 @@ pipeline{
         }
         stage("installer les dependance"){
             steps {
-                sh 'npm i'
+                sh 'npm install'
             }
         }
 
@@ -28,6 +28,18 @@ pipeline{
             steps{
                 sh 'npx cypress run'
             }
+        } 
+        stage("instalation du report"){
+            steps{
+                sh 'npm init npm i --save-dev cypress-mochawesome-reporter'
+            }
+
         }
+
+        post{
+        always {
+            archiveArtifacts artifacts: 'cypress/reports//.', followSymlinks: false
+        }
+    }
     }
 }
