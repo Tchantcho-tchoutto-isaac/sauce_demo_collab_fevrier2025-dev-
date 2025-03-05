@@ -22,7 +22,7 @@ pipeline{
                 sh 'npm install'
             }
         }
-        stage("installer les dependance"){
+        stage("installation  de cypress "){
             steps {
                 sh 'npx cypress install'
             }
